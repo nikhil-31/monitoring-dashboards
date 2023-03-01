@@ -59,3 +59,34 @@ Description:
 
 ## Final Dashboard
 *TODO*: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.  
+
+
+### GETTING STARTED
+
+1. port forward for jaeger
+```
+kubectl port-forward service/simplest-query --address 0.0.0.0 16686:16686
+```
+
+2. port forward for graphana
+```
+kubectl port-forward service/prometheus-grafana --address 0.0.0.0 3000:80 -n monitoring
+```
+
+3. port forward for frontend service
+```
+
+kubectl port-forward service/frontend-service --address 0.0.0.0 8080:8080
+```
+
+4. port forward for backend service
+```
+kubectl port-forward service/backend-service --address 0.0.0.0 8081:8081
+```
+
+5. service dns
+```angular2html
+simplest-7b4444bff4-hfwqk.simplest-query.default.svc.cluster.local:16686
+
+simplest-query.default.svc.cluster.local
+```
