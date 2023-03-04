@@ -5,6 +5,7 @@ from flask_pymongo import PyMongo
 
 from jaeger_client import Config
 from flask_opentracing import FlaskTracing
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
 
@@ -25,6 +26,9 @@ config = Config(
 )
 jaeger_tracer = config.initialize_tracer()
 tracing = FlaskTracing(jaeger_tracer, True, app)
+
+metrics = PrometheusMetrics(app)
+metrics.info("app_info", "Application info", version="1.0.3")
 
 
 class InvalidUsage(Exception):
