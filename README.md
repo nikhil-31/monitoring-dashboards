@@ -54,7 +54,7 @@ Describe in detail 5 metrics to measure these SLIs.
 to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour 
 period and take a screenshot.
 
-![Screenshot from 2023-03-02 18-27-15](https://user-images.githubusercontent.com/19944703/222435217-03005b04-0a6c-42c5-a5db-dcd06ff94875.png)
+![final_dashboard](https://user-images.githubusercontent.com/19944703/223995333-e4c2571d-f92b-4659-9574-37f4208c2d07.png)
 
 
 ## Tracing our Flask App
