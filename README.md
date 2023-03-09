@@ -69,6 +69,9 @@ TODO: We will create a Jaeger span to measure the processes on the backend. Once
 TODO: Now that the trace is running, let's add the metric to our current Grafana dashboard. 
 Once this is completed, provide a screenshot of it here.
 
+![jaeger](https://user-images.githubusercontent.com/19944703/224051225-2e75ed05-ae01-461a-ba82-7cc28f2ec3bf.png)
+
+![Screenshot from 2023-03-09 19-43-07](https://user-images.githubusercontent.com/19944703/224051376-86253e65-524a-457b-912c-1466ae26886b.png)
 
 
 
