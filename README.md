@@ -28,26 +28,10 @@ Take a screenshot of the output and include it here to verify the installation
 ## Describe SLO/SLI
 *TODO:* Describe, in your own words, what the SLIs are, based on an SLO of *monthly uptime* and *request response time*.
 
-SLIs or Service Level Indicators are measurable indicators of how the applications/ website/ service is faring compared
-to the promise of the organization to its customers and stakeholders. This promise is also known as SLOs or Service 
-Level Objectives
 
-An Example, SLI for a monthly uptime is the rate of the 20x or 30x responses of the website in a total incoming
-requests per month. For example, the average 20x or 30x responses of the web applications for the month of MAR 2023
-is 96%
-
-On the other hand, the SLI for a request response time is how long the request took to be served in actuality. for
-example, it took an average of 1sec for incoming requests to be served in the month of MAR 2023
 
 ## Creating SLI metrics.
-*TODO:* It is important to know why we want to measure certain metrics for our customer. 
-Describe in detail 5 metrics to measure these SLIs. 
 
-1. The average 20x or 30x responses of the web application for the month of MAR 2023 is 96 %
-2. It took an average of 1s  for incoming requests to be served for the month of MAR 2023
-3. 1.5% of the total incoming requests had 50x responses for the month of MAR 2023
-4. The average CPU usage of the web applications for the month of MAR 2023 is 50%
-5. The login requests in the web application for the month of MAR 2023 took an average of 2seconds to be served
 
 ## Create a Dashboard to measure our SLIs
 *TODO:* Create a dashboard to measure the uptime of the frontend and backend services We will also want 
@@ -101,24 +85,10 @@ Description: The mongo database, connection cannot be found.
 *TODO:* We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. Name four SLIs 
 that you would use to measure the success of this SLO.
 
-SLI or Service Level Indicators are measurable indicators of how the application/website is faring 
-compared to the promise of the organization to its customers and stakeholders. This promise is also known as 
-SLOs or Service level Objectives
 
-An example SLI for monthly uptime is the rate of the 20x or 30x (valid requests) responses of the website in a total 
-incoming requests per month.
-
-Another example is the request response time for the given request to be served. 
 
 ## Building KPIs for our plan
-*TODO*: Now that we have our SLIs and SLOs, create a list of 2-3 KPIs to accurately measure these metrics as well 
-as a description of why those KPIs were chosen. We will make a dashboard for this, but first write them down here.
 
-1. The average 20x or 30x responses of the web application for the month of MAR 2023 is 97.99%
-2. It took an average of 700ms for incoming requests to be served for the month of MAR 2023
-3. 1.5% of the total incoming requests had 50x responses for the month of MAR 2023
-4. The average CPU usage of the web application fo the month of MAR 2023 is 50%
-5. The list api request took 2 seconds to be returned in MAR 2023
 
 ## Final Dashboard
 *TODO*: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing
