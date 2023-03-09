@@ -26,10 +26,32 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend-service
+  labels:
+    job: frontend-api
+    app: frontend-app
 spec:
   selector:
     app: frontend
   ports:
-    - port: 8080
+    - name: frontend
+      protocol: TCP
+      port: 8080
       targetPort: 8080
   type: LoadBalancer
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: frontend-api-service-monitor
+  labels:
+    release: prometheus
+    app: prometheus
+spec:
+  jobLabel: job
+  endpoints:
+    - interval: 30s
+      port: frontend
+      path: /metrics
+  selector:
+    matchLabels:
+      app: frontend-app

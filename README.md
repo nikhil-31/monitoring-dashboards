@@ -93,6 +93,9 @@ Severity: High
 
 Description: The mongo database, connection cannot be found.
 
+### SCREENSHOTS
+
+![500](https://user-images.githubusercontent.com/19944703/223994026-cea2c05b-9599-4a26-98b5-8c1c1e0e8448.png)
 
 ## Creating SLIs and SLOs
 *TODO:* We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. Name four SLIs 
@@ -122,6 +125,7 @@ as a description of why those KPIs were chosen. We will make a dashboard for thi
 your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are 
 represented in the dashboard.  
 
+![final_dashboard](https://user-images.githubusercontent.com/19944703/223995333-e4c2571d-f92b-4659-9574-37f4208c2d07.png)
 
 ### GETTING STARTED
 
@@ -145,10 +149,18 @@ kubectl port-forward service/frontend-service --address 0.0.0.0 8080:8080
 ```
 kubectl port-forward service/backend-service --address 0.0.0.0 8081:8081
 ```
-
-5. service dns
+ 
+5. port forward for prometheus service
 ```
-simplest-7b4444bff4-hfwqk.simplest-query.default.svc.cluster.local:16686
-
-simplest-query.default.svc.cluster.local
+kubectl port-forward service/prometheus-operated -n monitoring --address 0.0.0.0 9090:9090
 ```
+
+### Shell Script to force delete pods
+```shell
+for i in pod/backend-app-6c556b676-sl2ch
+  echo "kubectl delete $i --grace-period=0 --force"
+  kubectl delete $i --grace-period=0 --force
+done
+```
+
+sum(rate(flask_http_request_duration_seconds_sum{container=~"backend|frontend"}[5m])) / sum(rate(flask_http_request_duration_seconds_count{container=~"backend|frontend"}[5m])) 

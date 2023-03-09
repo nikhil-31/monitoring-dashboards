@@ -26,10 +26,32 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend-service
+  labels:
+    job: backend-api
+    app: backend-app
 spec:
   selector:
     app: backend
   ports:
-    - port: 8081
+    - name: backend
+      protocol: TCP
+      port: 8081
       targetPort: 8081
   type: LoadBalancer
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: backend-api-service-monitor
+  labels:
+    release: prometheus
+    app: prometheus
+spec:
+  jobLabel: job
+  endpoints:
+    - interval: 30s
+      port: backend
+      path: /metrics
+  selector:
+    matchLabels:
+      app: backend-app
