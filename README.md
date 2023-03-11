@@ -101,13 +101,83 @@ causing the endpoint to connect to a mongodb database that does not exist.
 ## Creating SLIs and SLOs
 TODO: We want to create an SLO guaranteeing that our application has a 99.95% uptime per month. Name four SLIs that you would use to measure the success of this SLO.
 
+SLOs:
+1. 99.95% uptime for month of MAR 2023
+2. 0.05% error budget - 4xx and 5xx responses
+3. Latency should be below 500ms
+4. Monthly average CPU should be less than 60%
+5. Monthly average memory usage should not exceed 600Mib
+
+SLIs:
+1. The average 20x or 30x responses of the web application for the month of MAR 2023 was 98%
+2. 2% of total incoming requests had 5xx responses for the month of MAR 2023
+3. It took an average of 500ms for incoming requests to be served for the month of MAR 2023
+4. The average CPU usage was 55%
+5. The average memory usage was 500Mib
+
 
 
 ## Building KPIs for our plan
 TODO: Now that we have our SLIs and SLOs, create a list of 2-3 KPIs to accurately measure these metrics as well as a description of why those KPIs were chosen. We will make a dashboard for this, but first write them down here.
 
+1. The average 20x or 30x responses of the web application for the month of MAR 2023 was 98%
+   - monthly uptime - This KPI indicates the total usability of the application
+   - 20x code responses per month - this KPI indicates availability of the pages of the application
+   - Monthly traffic - This KPI will indicate the number of requests served by the application
+2. 2% of total incoming requests had 5xx responses for the month of MAR 2023
+   - Monthly downtime - this KPI indicates the number of times the application was down
+   - Errors per month - this KPI will indicate the monthly errors encountered in the application.
+   - Monthly traffic - this KPI will indicate the number of requests served by the application.
+3. It took an average of 500ms for incoming requests to be served for the month of MAR 2023
+   - Average monthly latency - this KPI will indicate the time it took for the application to respond to requests.
+   - Monthly uptime - this KPI indicates the total usability of the application.
+   - Monthly traffic - this KPI will indicate the number of requests served by the application.
+4. The average CPU usage was 55%
+   - Average monthly CPU usage of pod used by the application - this KPI will indicate how much CPU is used by the source pod of the application.
+   - Average monthly CPU usage of all the pods - this KPI will indicate how much CPU is used by all the pods required to run the application.
+   - Monthly quota limit - this KPI will indicate whether the application is exceeding its usage of the CPU quota.
+5. The average memory usage was 500Mib
+   - Average monthly memory usage of pod used by the application - this KPI will indicate how much memory is used by the source pod of the application.
+   - Average monthly memory usage of all the pods - this KPI will indicate how much memory is used by all the pods required to run the application.
+   - Monthly quota limit - this KPI will indicate whether the application is exceeding its usage of the memory quota.
 
 
 ## Final Dashboard
 TODO: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.
 
+### GETTING STARTED
+
+port forward for jaeger
+```
+kubectl port-forward service/simplest-query --address 0.0.0.0 16686:16686
+```
+
+port forward for grafana
+```
+kubectl port-forward service/prometheus-grafana --address 0.0.0.0 3000:80 -n monitoring
+```
+
+port forward for frontend service
+```
+
+kubectl port-forward service/frontend-service --address 0.0.0.0 8080:8080
+```
+
+port forward for backend service
+```
+kubectl port-forward service/backend-service --address 0.0.0.0 8081:8081
+```
+ 
+port forward for prometheus service
+```
+kubectl port-forward service/prometheus-operated -n monitoring --address 0.0.0.0 9090:9090
+```
+
+## scripts
+### Shell Script to force delete pods
+```shell
+for i in pod/backend-app-6c556b676-sl2ch
+  echo "kubectl delete $i --grace-period=0 --force"
+  kubectl delete $i --grace-period=0 --force
+done
+```
